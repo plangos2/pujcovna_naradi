@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang=cs>
+<head>
+    <meta charset=UTF-8>
+    <meta content="width=device-width,initial-scale=1,viewport-fit-cover" name=viewport>
+    <title>Půjčovna stavebního nářadí a techniky | Profesionální vybavení</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Dodatečné styly pro zarovnání textu O nás na střed */
+        .about-content-centered {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text-centered {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+            text-align: center;
+        }
+
+        .about-text-centered h3 {
+            color: var(--secondary);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .services-list-centered {
+            list-style: none;
+            margin: 1rem 0 2rem 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        /* UPRAVENÁ MŘÍŽKA - 3 KARTY NAD SEBOU A 1 KARTA POD NIMI */
+        .advantages-grid-special {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .advantages-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .advantage-card-centered {
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: var(--transition);
+            text-align: center;
+            height: 100%;
+        }
+
+        .advantage-card-centered:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .advantage-card-centered h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .single-card {
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: var(--transition);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .single-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .single-card h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* RESPONZIVITA PRO MOBILY */
+        @media (max-width: 768px) {
+            .advantages-row {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            
+            .single-card {
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class=container>
+            <h1>Půjčovna stavebního nářadí a techniky</h1>
+            <p><strong>LANGEROVI</strong></p>
+        </div>
+    </header>
+    
+<nav class=category-nav>
+    <div class=container>
+        <button class=hamburger>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul>
+            <li><a href="index.html" class="active">Úvod</a></li>
+            <li><a href="VYKOPOVE-PRACE/vykopove-prace.html">Výkopové práce</a></li>
+            <li><a href="STAVEBNI-NARADI/stavebni-naradi.html">Stavební nářadí</a></li>
+            <li><a href="ZAHRADNI-PRACE/zahradni-naradi.html">Zahradní nářadí</a></li>
+            <li><a href="CENIK/cenik.html">Ceník</a></li>
+            <li><a href="KONTAKT/kontakt.html">Kontakt</a></li>
+        </ul>
+    </div>
+</nav>
+    
+    <main class=container>
+        <section class=category-section>
+            <h2>Rychlý přehled kategorií</h2>
+            <div class="quick-links">
+                <a href="VYKOPOVE-PRACE/vykopove-prace.html" class="quick-link-card">
+                    <h3>Výkopové práce</h3>
+                    <p>bagr, dumper, vibrační technika</p>
+                    <span class="btn btn-primary">Prohlédnout</span>
+                </a>
+                <a href="STAVEBNI-NARADI/stavebni-naradi.html" class="quick-link-card">
+                    <h3>Stavební nářadí</h3>
+                    <p>vrtačky, míchačky, lešení, žebříky</p>
+                    <span class="btn btn-primary">Prohlédnout</span>
+                </a>
+                <a href="ZAHRADNI-PRACE/zahradni-naradi.html" class="quick-link-card">
+                    <h3>Zahradní nářadí</h3>
+                    <p>sekačka, křovinořezy, motorová pila</p>
+                    <span class="btn btn-primary">Prohlédnout</span>
+                </a>
+            </div>
+        </section>
+
+        <section class=category-section>
+            <h2>O nás</h2>
+            <div class="about-content-centered">
+                <div class="about-text-centered">
+                    <p>Vítejte v půjčovně stavebního nářadí a techniky <strong>LANGEROVI</strong>! Nabízíme široký výběr vybavení pro výkopové práce, stavební nářadí i zahradní nářadí.</p>
+                    
+                    <h3>Naše služby</h3>
+                    <p>Nabízíme široký výběr kvalitního nářadí a techniky pro:</p>
+                    <ul class="services-list-centered">
+                        <li>✅ <strong>Výkopové práce</strong> - bagr, dumper, vibrační technika</li>
+                        <li>✅ <strong>Stavební práce</strong> - vrtačky, míchačky, lešení, žebříky</li>
+                        <li>✅ <strong>Zahradní práce</strong> - sekačka, křovinořez, motorová pila</li>
+                        <li>✅ <strong>Specializované vybavení</strong> - svářečky, topení, kompresory</li>
+                    </ul>
+
+                    <h3>Proč si vybrat nás?</h3>
+                    <div class="advantages-grid-special">
+                        <!-- PRVNÍ ŘÁDEK - 3 KARTY VEDLE SEBE -->
+                        <div class="advantages-row">
+                            <div class="advantage-card-centered">
+                                <h4>🛠️ Kvalitní vybavení</h4>
+                                <p>Všechny stroje pravidelně servisujeme a udržujeme v perfektním technickém stavu.</p>
+                            </div>
+                            <div class="advantage-card-centered">
+                                <h4>🚚 Dodání</h4>
+                                <p>Zajišťujeme dovoz po Lanškrouně a okolí do 30 km.</p>
+                            </div>
+                            <div class="advantage-card-centered">
+                                <h4>💰 Příznivé ceny</h4>
+                                <p>Transparentní ceník bez skrytých poplatků.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- DRUHÝ ŘÁDEK - 1 KARTA UPROSTŘED -->
+                        <div class="single-card">
+                            <h4>💪 Profesionální přístup</h4>
+                            <p>Nabízíme služby i s obsluhou pro náročnější práce.</p>
+                        </div>
+                    </div>
+
+                    <h3>Naše filozofie</h3>
+                    <p>Věříme, že kvalitní nářadí je základem každé úspěšné stavby. Proto nabízíme pouze ověřenou techniku od renomovaných výrobců jako jsou Makita, DEWALT, HAKI a další.</p>
+                    
+                    <p><strong>Potřebujete poradit s výběrem vhodného nářadí? Neváhejte nás kontaktovat!</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class=container>
+            <div class=footer-content>
+                <div class=footer-section>
+                    <h3>Kontakt</h3>
+                    <div class="contact-info-footer">
+                        <p><strong>Telefon:</strong> +420 731 127 142 (Langer)</p>
+                        <p><strong>Telefon:</strong> +420 731 127 144 (Langerová)</p>
+                        <p><strong>Email:</strong> dobrecov@seznam.cz</p>
+                        <p><strong>Adresa:</strong> Lidická 54, Lanškroun 56301</p>
+                    </div>
+                </div>
+                <div class=footer-section>
+                    <h3>Rychlé odkazy</h3>
+                    <ul class="footer-links">
+                        <li><a href="VYKOPOVE-PRACE/vykopove-prace.html">Výkopové práce</a></li>
+                        <li><a href="STAVEBNI-NARADI/stavebni-naradi.html">Stavební nářadí</a></li>
+                        <li><a href="ZAHRADNI-PRACE/zahradni-naradi.html">Zahradní nářadí</a></li>
+                        <li><a href="CENIK/cenik.html">Ceník</a></li>
+                        <li><a href="KONTAKT/kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class=footer-bottom>
+                <p>© 2023 Půjčovna nářadí LANGEROVI. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
