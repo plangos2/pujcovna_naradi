@@ -1537,3 +1537,11 @@ html {
 body.always-scrollbar {
     overflow-y: scroll;
 }
+
+.contact-cards-container {
+    align-items: start;
+}
+
+.contact-cards-container .card {
+    height: auto !important;
+}
