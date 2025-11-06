@@ -1,5 +1,5 @@
 const itemsData = {
-    "Bagr": {
+    "Minibagr": {
         cena: "650 Kč/h",
         doba: "Dohodou",
         doprava: "Lanškroun 500 Kč - mimo Lanškroun 15 Kč/1km do 30 km",
@@ -1142,4 +1142,5 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
 });
