@@ -307,8 +307,8 @@ const productSpecs = {
             { label: "Vnější šířka přívěsu", value: "192 cm" }
         ]
     },
-    "bagr": {
-        title: "Bagr",
+    "minibagr": {
+        title: "Minibagr",
         specs: [
             { label: "Provozní hmotnost", value: "1000 kg" },
             { label: "Maximální hloubka kopání", value: "2 m" }
@@ -1144,3 +1144,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
