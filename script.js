@@ -1,5 +1,5 @@
 const itemsData = {
-    "Minibagr": {
+    "Bagr": {
         cena: "650 Kč/h",
         doba: "Dohodou",
         doprava: "Lanškroun 500 Kč - mimo Lanškroun 15 Kč/1km do 30 km",
@@ -308,7 +308,7 @@ const productSpecs = {
         ]
     },
     "bagr": {
-        title: "Minibagr",
+        title: "Bagr",
         specs: [
             { label: "Provozní hmotnost", value: "1000 kg" },
             { label: "Maximální hloubka kopání", value: "2 m" }
@@ -601,7 +601,7 @@ const productSpecs = {
             { label: "Frekvence", value: "Multi-IQ (vícepásmová technologie)" },
             { label: "Citlivost / Hlasitost", value: "10 úrovní" },
             { label: "Diskriminace", value: "25 segmentů + Notch funkce" },
-            { label: "Tóny cílu", value: "5 tónů" },
+            { label: "Tóny cíle", value: "5 tónů" },
             { label: "Cílové ID", value: "−9 až 40" },
             { label: "Režim Pinpoint", value: "Ano" },
             { label: "Bluetooth", value: "Ano (aptX™ Low Latency – bez zpoždění zvuku)" },
@@ -664,6 +664,7 @@ class Lightbox {
     init() {
         this.createLightbox();
         this.setupEventListeners();
+        this.setupBackButton();
         this.autoDiscoverGalleries();
     }
 
@@ -728,6 +729,20 @@ class Lightbox {
         });
     }
 
+    setupBackButton() {
+        // Zpracování hardwarového back tlačítka na mobilech
+        window.addEventListener('popstate', (e) => {
+            if (this.lightbox.classList.contains('active')) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+                
+                // Zabráníme dalšímu zpracování události
+                history.pushState(null, null, window.location.href);
+            }
+        });
+    }
+
     autoDiscoverGalleries() {
         const lightboxImages = document.querySelectorAll('[data-lightbox]');
         
@@ -764,6 +779,9 @@ class Lightbox {
         this.isAnimating = true;
         this.lightbox.style.display = 'flex';
         
+        // Přidáme stav do historie pro back tlačítko
+        history.pushState({ lightboxOpen: true }, '');
+        
         // Force reflow
         this.lightbox.offsetHeight;
         
@@ -785,6 +803,11 @@ class Lightbox {
         this.isAnimating = true;
         this.lightbox.classList.add('closing');
         this.lightbox.classList.remove('active');
+        
+        // Vrátíme se v historii pouze pokud jsme přidali stav
+        if (history.state && history.state.lightboxOpen) {
+            history.back();
+        }
         
         setTimeout(() => {
             this.lightbox.style.display = 'none';
@@ -1142,7 +1165,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-
 });
-
-
