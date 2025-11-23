@@ -1,10 +1,98 @@
-<!doctype html>
 <html lang=cs>
 <head>
     <meta charset=UTF-8>
     <meta content="width=device-width,initial-scale=1,viewport-fit=cover"name=viewport>
     <title>Zahradní nářadí | Půjčovna stavebního nářadí LANGEROVI</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        .subcategory-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+        
+        .subcategory-btn {
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            border: 2px solid #555;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .subcategory-btn:hover {
+            background: #444;
+            border-color: var(--secondary);
+        }
+        
+        .subcategory-btn.active {
+            background: var(--secondary);
+            color: #000;
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .subcategory-content {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .subcategory-content.active {
+            display: block;
+        }
+        
+        .all-categories {
+            display: none;
+        }
+        
+        .all-categories.active {
+            display: block;
+        }
+        
+        /* MOBILNÍ ROZBALOVACÍ MENU */
+        .mobile-category-select {
+            display: none;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 30px auto;
+            padding: 15px;
+            background: #333;
+            color: white;
+            border: 2px solid #555;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .mobile-category-select:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        @media (max-width: 768px) {
+            .subcategory-tabs {
+                display: none;
+            }
+            
+            .mobile-category-select {
+                display: block;
+            }
+            
+            .subcategory-btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -35,118 +123,264 @@
     <main class=container>
         <section class=category-section>
             <h2>Zahradní nářadí</h2>
-            <div class=cards-container>
-                <!-- Odstraněno: Teleskopický křovinořez -->
-                <!-- Odstraněno: Křovinořez -->
-                
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Sekačka na trávu</h3>
+            
+            <div class="subcategory-tabs">
+                <button class="subcategory-btn active" data-category="vsechny">Všechny</button>
+                <button class="subcategory-btn" data-category="sekaci">Sekací technika</button>
+                <button class="subcategory-btn" data-category="udrzba">Údržba zahrady</button>
+                <button class="subcategory-btn" data-category="drevorubecke">Dřevorubecké nářadí</button>
+                <button class="subcategory-btn" data-category="grilovani">Grilování</button>
+            </div>
+
+            <select class="mobile-category-select" id="mobileCategorySelect">
+                <option value="vsechny">Všechny kategorie</option>
+                <option value="sekaci">Sekací technika</option>
+                <option value="udrzba">Údržba zahrady</option>
+                <option value="drevorubecke">Dřevorubecké nářadí</option>
+                <option value="grilovani">Grilování</option>
+            </select>
+
+            <!-- VŠECHNY KATEGORIE NAJEDNOU -->
+            <div class="all-categories active" id="vsechny">
+                <div class=cards-container>
+                    <!-- SEKACÍ TECHNIKA -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Sekačka na trávu</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Samosběrná sekačka na trávu</p>
+                            <div class=price>500 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Sekačka na trávu">Info</button>
+                        </div>
                     </div>
-                    <div class=card-body>
-                        <p>Samosběrná sekačka na trávu</p>
-                        <div class=price>500 Kč/den</div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Motorový křovinořez</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální sekání vysoké trávy a křovin</p>
+                            <img src="../FOTKY/MOTOROVY_KROVINOREZ/motorovy_krovinorez.jpg" alt="Motorový křovinořez - profesionální sekání trávy a křovin" class="card-image clickable" data-lightbox="motorovy-krovinorez" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Motorový křovinořez">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=motorovy-krovinorez>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Sekačka na trávu">Info</button>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Elektrický plotostřih</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální střih živých plotů</p>
+                            <img src="../FOTKY/ELEKTRICKY_PLOTOSTRIH_HECHT/elektricky_plotostrih.jpg" alt="Elektrický plotostřih - profesionální střih živých plotů" class="card-image clickable" data-lightbox="elektricky-plotostrih" data-index="0">
+                            <div class=price>150 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Elektrický plotostřih">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=elektricky-plotostrih>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <!-- ÚDRŽBA ZAHRADY -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Elektrický vysavač/foukač</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Vysávání a foukání listí</p>
+                            <img src="../FOTKY/ELEKTRICKY_VYSAVAC-FOUKAC_VEGA_VE50302/elektricky_vysavac-foukac_vega_VE50302.jpg" alt="Elektrický vysavač/foukač Vega - vysávání a foukání listí" class="card-image clickable" data-lightbox="elektricky-vysavac-foukac" data-index="0">
+                            <div class=price>100 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Elektrický vysavač/foukač">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=elektricky-vysavac-foukac>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Teleskopické nůžky na živý plot</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Stříhání živých plotů s teleskopickou rukojetí</p>
+                            <img src="../FOTKY/TELESKOPICKE_NUZKY_NA_ZIVY_PLOT/teleskopicke_nuzky_na_zivy_plot.jpg" alt="Teleskopické nůžky na živý plot - stříhání s teleskopickou rukojetí" class="card-image clickable" data-lightbox="teleskopicke-nuzky" data-index="0">
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Teleskopické nůžky na živý plot">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=teleskopicke-nuzky>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <!-- DŘEVORUBECKÉ NÁŘADÍ -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Motorová pila</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Řezání dřeva</p>
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Motorová pila">Info</button>
+                        </div>
+                    </div>
+
+                    <!-- GRILOVÁNÍ -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Gril na kýtu</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Gril na kýtu, malé sele do 30kg</p>
+                            <img src="../FOTKY/GRIL/gril_z_boku.jpg" alt="Gril na kýtu - pohled z boku, vhodný pro kýty a malá selata do 30kg" class="card-image clickable" data-lightbox="gril-na-kytu" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Gril na kýtu">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=gril-na-kytu>Info o produktu</button>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class=card>
-    <div class=card-header>
-        <h3>Elektrický vysavač/foukač</h3>
-    </div>
-    <div class=card-body>
-        <p>Vysávání a foukání listí</p>
-        <!-- Hlavní fotka elektrického vysavače/foukače s lightbox funkcí -->
-        <img src="../FOTKY/ELEKTRICKY_VYSAVAC-FOUKAC_VEGA_VE50302/elektricky_vysavac-foukac_vega_VE50302.jpg" alt="Elektrický vysavač/foukač Vega - vysávání a foukání listí" class="card-image clickable" data-lightbox="elektricky-vysavac-foukac" data-index="0">
-        <div class=price>100 Kč/den</div>
-    </div>
-    <div class=card-footer>
-        <button class="btn btn-primary info-btn" data-product="Elektrický vysavač/foukač">Info</button>
-        <button class="btn btn-info product-info-btn" data-product=elektricky-vysavac-foukac>Info o produktu</button>
-    </div>
-</div>
-
-<div class=card>
-    <div class=card-header>
-        <h3>Motorový křovinořez</h3>
-    </div>
-    <div class=card-body>
-        <p>Profesionální sekání vysoké trávy a křovin</p>
-        <!-- Hlavní fotka motorového křovinořezu s lightbox funkcí -->
-        <img src="../FOTKY/MOTOROVY_KROVINOREZ/motorovy_krovinorez.jpg" alt="Motorový křovinořez - profesionální sekání trávy a křovin" class="card-image clickable" data-lightbox="motorovy-krovinorez" data-index="0">
-        <div class=price>400 Kč/den</div>
-    </div>
-    <div class=card-footer>
-        <button class="btn btn-primary info-btn" data-product="Motorový křovinořez">Info</button>
-        <button class="btn btn-info product-info-btn" data-product=motorovy-krovinorez>Info o produktu</button>
-    </div>
-</div>
-
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Teleskopické nůžky na živý plot</h3>
+            <!-- SEKACÍ TECHNIKA -->
+            <div class="subcategory-content" id="sekaci">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Sekačka na trávu</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Samosběrná sekačka na trávu</p>
+                            <div class=price>500 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Sekačka na trávu">Info</button>
+                        </div>
                     </div>
-                    <div class=card-body>
-                        <p>Stříhání živých plotů s teleskopickou rukojetí</p>
-                        <!-- Hlavní fotka teleskopických nůžek s lightbox funkcí -->
-                        <img src="../FOTKY/TELESKOPICKE_NUZKY_NA_ZIVY_PLOT/teleskopicke_nuzky_na_zivy_plot.jpg" alt="Teleskopické nůžky na živý plot - stříhání s teleskopickou rukojetí" class="card-image clickable" data-lightbox="teleskopicke-nuzky" data-index="0">
-                        <div class=price>200 Kč/den</div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Motorový křovinořez</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální sekání vysoké trávy a křovin</p>
+                            <img src="../FOTKY/MOTOROVY_KROVINOREZ/motorovy_krovinorez.jpg" alt="Motorový křovinořez - profesionální sekání trávy a křovin" class="card-image clickable" data-lightbox="motorovy-krovinorez" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Motorový křovinořez">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=motorovy-krovinorez>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Teleskopické nůžky na živý plot">Info</button>
-                        <button class="btn btn-info product-info-btn" data-product=teleskopicke-nuzky>Info o produktu</button>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Elektrický plotostřih</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální střih živých plotů</p>
+                            <img src="../FOTKY/ELEKTRICKY_PLOTOSTRIH_HECHT/elektricky_plotostrih.jpg" alt="Elektrický plotostřih - profesionální střih živých plotů" class="card-image clickable" data-lightbox="elektricky-plotostrih" data-index="0">
+                            <div class=price>150 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Elektrický plotostřih">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=elektricky-plotostrih>Info o produktu</button>
+                        </div>
                     </div>
                 </div>
-                
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Motorová pila</h3>
-                    </div>
-                    <div class=card-body>
-                        <p>Řezání dřeva</p>
-                        <div class=price>200 Kč/den</div>
-                    </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Motorová pila">Info</button>
-                    </div>
-                </div>
-                
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Gril na kýtu</h3>
-                    </div>
-                    <div class=card-body>
-                        <p>Gril na kýtu, malé sele do 30kg</p>
-                        <!-- HLAVNÍ FOTKA GRILU Z BOKU -->
-                        <img src="../FOTKY/GRIL/gril_z_boku.jpg" alt="Gril na kýtu - pohled z boku, vhodný pro kýty a malá selata do 30kg" class="card-image clickable" data-lightbox="gril-na-kytu" data-index="0">
-                        <div class=price>400 Kč/den</div>
-                    </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Gril na kýtu">Info</button>
-                        <button class="btn btn-info product-info-btn" data-product=gril-na-kytu>Info o produktu</button>
-                    </div>
-                </div>
+            </div>
 
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Elektrický plotostřih</h3>
+            <!-- ÚDRŽBA ZAHRADY -->
+            <div class="subcategory-content" id="udrzba">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Elektrický vysavač/foukač</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Vysávání a foukání listí</p>
+                            <img src="../FOTKY/ELEKTRICKY_VYSAVAC-FOUKAC_VEGA_VE50302/elektricky_vysavac-foukac_vega_VE50302.jpg" alt="Elektrický vysavač/foukač Vega - vysávání a foukání listí" class="card-image clickable" data-lightbox="elektricky-vysavac-foukac" data-index="0">
+                            <div class=price>100 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Elektrický vysavač/foukač">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=elektricky-vysavac-foukac>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-body>
-                        <p>Profesionální střih živých plotů</p>
-                        <!-- Fotka plotostřihu -->
-                        <img src="../FOTKY/ELEKTRICKY_PLOTOSTRIH_HECHT/elektricky_plotostrih.jpg" alt="Elektrický plotostřih - profesionální střih živých plotů" class="card-image clickable" data-lightbox="elektricky-plotostrih" data-index="0">
-                        <div class=price>150 Kč/den</div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Teleskopické nůžky na živý plot</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Stříhání živých plotů s teleskopickou rukojetí</p>
+                            <img src="../FOTKY/TELESKOPICKE_NUZKY_NA_ZIVY_PLOT/teleskopicke_nuzky_na_zivy_plot.jpg" alt="Teleskopické nůžky na živý plot - stříhání s teleskopickou rukojetí" class="card-image clickable" data-lightbox="teleskopicke-nuzky" data-index="0">
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Teleskopické nůžky na živý plot">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=teleskopicke-nuzky>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Elektrický plotostřih">Info</button>
-                        <button class="btn btn-info product-info-btn" data-product=elektricky-plotostrih>Info o produktu</button>
+                </div>
+            </div>
+
+            <!-- DŘEVORUBECKÉ NÁŘADÍ -->
+            <div class="subcategory-content" id="drevorubecke">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Motorová pila</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Řezání dřeva</p>
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Motorová pila">Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRILOVÁNÍ -->
+            <div class="subcategory-content" id="grilovani">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Gril na kýtu</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Gril na kýtu, malé sele do 30kg</p>
+                            <img src="../FOTKY/GRIL/gril_z_boku.jpg" alt="Gril na kýtu - pohled z boku, vhodný pro kýty a malá selata do 30kg" class="card-image clickable" data-lightbox="gril-na-kytu" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Gril na kýtu">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=gril-na-kytu>Info o produktu</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Skryté fotky pro lightbox galerie -->
+    <div style="display: none;">
+        <!-- Skryté fotky elektrického plotostřihu -->
+        <img src="../FOTKY/ELEKTRICKY_PLOTOSTRIH_HECHT/elektricky_plotostrih_roztec.jpg" data-lightbox="elektricky-plotostrih" data-index="1">
+        
+        <!-- SKRYTÉ FOTKY GRILU -->
+        <img src="../FOTKY/GRIL/gril_ze_predu.jpg" data-lightbox="gril-na-kytu" data-index="1">
+    </div>
 
 <footer>
     <div class=container>
@@ -199,15 +433,57 @@
             </div>
         </div>
     </div>
-
-    <!-- Skryté fotky pro lightbox galerie -->
-    <div style="display: none;">
-        <!-- Skryté fotky elektrického plotostřihu -->
-        <img src="../FOTKY/ELEKTRICKY_PLOTOSTRIH_HECHT/elektricky_plotostrih_roztec.jpg" data-lightbox="elektricky-plotostrih" data-index="1">
-        
-        <!-- SKRYTÉ FOTKY GRILU -->
-        <img src="../FOTKY/GRIL/gril_ze_predu.jpg" data-lightbox="gril-na-kytu" data-index="1">
-    </div>
+    
+    <script>
+        // JavaScript pro podkategorie
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.subcategory-btn');
+            const tabContents = document.querySelectorAll('.subcategory-content');
+            const allCategories = document.getElementById('vsechny');
+            const mobileSelect = document.getElementById('mobileCategorySelect');
+            
+            // Funkce pro změnu kategorie
+            function switchCategory(category) {
+                // Odstraníme active třídu ze všech tlačítek a obsahů
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                allCategories.classList.remove('active');
+                
+                // Přidáme active třídu kliknutému tlačítku
+                if (category !== 'vsechny') {
+                    const activeBtn = document.querySelector(`[data-category="${category}"]`);
+                    if (activeBtn) activeBtn.classList.add('active');
+                }
+                
+                // Zobrazíme obsah podle výběru
+                if (category === 'vsechny') {
+                    allCategories.classList.add('active');
+                } else {
+                    document.getElementById(category).classList.add('active');
+                }
+                
+                // Aktualizujeme select na mobilech
+                if (mobileSelect) {
+                    mobileSelect.value = category;
+                }
+            }
+            
+            // Event listenery pro tlačítka
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    switchCategory(category);
+                });
+            });
+            
+            // Event listener pro mobilní select
+            if (mobileSelect) {
+                mobileSelect.addEventListener('change', function() {
+                    switchCategory(this.value);
+                });
+            }
+        });
+    </script>
     
     <script src="../script.js"></script>
 </body>
