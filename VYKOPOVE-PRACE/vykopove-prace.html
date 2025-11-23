@@ -5,6 +5,95 @@
     <meta content="width=device-width,initial-scale=1,viewport-fit=cover"name=viewport>
     <title>Výkopové práce | Půjčovna stavebního nářadí LANGEROVI</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        .subcategory-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+        
+        .subcategory-btn {
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            border: 2px solid #555;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .subcategory-btn:hover {
+            background: #444;
+            border-color: var(--secondary);
+        }
+        
+        .subcategory-btn.active {
+            background: var(--secondary);
+            color: #000;
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .subcategory-content {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .subcategory-content.active {
+            display: block;
+        }
+        
+        .all-categories {
+            display: none;
+        }
+        
+        .all-categories.active {
+            display: block;
+        }
+        
+        /* MOBILNÍ ROZBALOVACÍ MENU */
+        .mobile-category-select {
+            display: none;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 30px auto;
+            padding: 15px;
+            background: #333;
+            color: white;
+            border: 2px solid #555;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .mobile-category-select:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        @media (max-width: 768px) {
+            .subcategory-tabs {
+                display: none;
+            }
+            
+            .mobile-category-select {
+                display: block;
+            }
+            
+            .subcategory-btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -35,103 +124,220 @@
     <main class=container>
         <section class=category-section>
             <h2>Výkopové práce</h2>
-            <div class=cards-container>
-                <!-- HLAVNÍ STROJE -->
-<div class=card>
-    <div class=card-header>
-        <h3>Minibagr</h3>
-    </div>
-    <div class=card-body>
-        <p>Minibagr pro zemní práce</p>
-        <!-- Hlavní fotka bagru s lightbox funkcí -->
-        <img src="../FOTKY/BAGR/bagr_orizly.jpg" alt="Minibagr - profesionální zemní práce" class="card-image clickable" data-lightbox="bagr" data-index="0">
-        <div class=price>650 Kč/hod</div>
-    </div>
-    <div class=card-footer>
-        <button class="btn btn-primary info-btn" data-product=Minibagr>Info</button>
-        <button class="btn btn-info product-info-btn" data-product=bagr>Info o produktu</button>
-    </div>
-</div>
-                
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Dumper</h3>
-                    </div>
-                    <div class=card-body>
-                        <p>Přeprava materiálu na stavbě</p>
-                        <!-- Hlavní fotka dumperu s lightbox funkcí -->
-                        <img src="../FOTKY/DUMPER/dumper.jpg" alt="Dumper - pohled z boku" class="card-image clickable" data-lightbox="dumper" data-index="0">
-                        <div class=price>2 000 Kč/den</div>
-                    </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product=Dumper>Info</button>
-                        <button class="btn btn-info product-info-btn" data-product=dumper>Info o produktu</button>
-                    </div>
-                </div>
+            
+            <div class="subcategory-tabs">
+                <button class="subcategory-btn active" data-category="vsechny">Všechny</button>
+                <button class="subcategory-btn" data-category="tezka">Těžká technika</button>
+                <button class="subcategory-btn" data-category="zhutnovani">Zhutňování</button>
+                <button class="subcategory-btn" data-category="doprava">Doprava materiálu</button>
+            </div>
 
-                <!-- VIBRAČNÍ TECHNIKA -->
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Vibrační deska</h3>
+            <select class="mobile-category-select" id="mobileCategorySelect">
+                <option value="vsechny">Všechny kategorie</option>
+                <option value="tezka">Těžká technika</option>
+                <option value="zhutnovani">Zhutňování</option>
+                <option value="doprava">Doprava materiálu</option>
+            </select>
+
+            <!-- VŠECHNY KATEGORIE NAJEDNOU -->
+            <div class="all-categories active" id="vsechny">
+                <div class=cards-container>
+                    <!-- HLAVNÍ STROJE -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Minibagr</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Minibagr pro zemní práce</p>
+                            <img src="../FOTKY/BAGR/bagr_orizly.jpg" alt="Minibagr - profesionální zemní práce" class="card-image clickable" data-lightbox="bagr" data-index="0">
+                            <div class=price>650 Kč/hod</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product=Minibagr>Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=bagr>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-body>
-                        <p>Zhutňování zeminy</p>
-                        <!-- Hlavní fotka vibrační desky s lightbox funkcí -->
-                        <img src="../FOTKY/VIBRACNI_DESKA/vibracni_deska.jpg" alt="Vibrační deska - zhutňování zemin a dlažeb" class="card-image clickable" data-lightbox="vibracni-deska" data-index="0">
-                        <div class=price>450 Kč/den</div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Dumper</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Přeprava materiálu na stavbě</p>
+                            <img src="../FOTKY/DUMPER/dumper.jpg" alt="Dumper - pohled z boku" class="card-image clickable" data-lightbox="dumper" data-index="0">
+                            <div class=price>2 000 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product=Dumper>Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=dumper>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Vibrační deska">Info</button>
-                        <button class="btn btn-info product-info-btn" data-product=vibrací-deska>Info o produktu</button>
+
+                    <!-- VIBRAČNÍ TECHNIKA -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Vibrační deska</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Zhutňování zeminy</p>
+                            <img src="../FOTKY/VIBRACNI_DESKA/vibracni_deska.jpg" alt="Vibrační deska - zhutňování zemin a dlažeb" class="card-image clickable" data-lightbox="vibracni-deska" data-index="0">
+                            <div class=price>450 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Vibrační deska">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=vibrací-deska>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Vibrační pěch</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Pěchování zeminy</p>
+                            <img src="../FOTKY/VIBRACNI_PECH/vibracni_pech.jpg" alt="Vibrační pěch - pěchování zeminy" class="card-image clickable" data-lightbox="vibracni-pech" data-index="0">
+                            <div class=price>550 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Vibrační pěch">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=vibrací-pěch>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <!-- DOPRAVA -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Velký vlek</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Přeprava těžkých nákladů</p>
+                            <img src="../FOTKY/VLEK_VELKY/vlek_velky.jpg" alt="Velký vlek - přeprava těžkých nákladů" class="card-image clickable" data-lightbox="vlek-velky" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Velký vlek">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=velký-vlek>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Malý vlek</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Přeprava lehčích nákladů</p>
+                            <img src="../FOTKY/VLEK_MALY/vlek_maly_ze_predu.jpg" alt="Malý vlek - přeprava lehčích nákladů" class="card-image clickable" data-lightbox="maly-vlek" data-index="0">
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Malý vlek">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=malý-vlek>Info o produktu</button>
+                        </div>
                     </div>
                 </div>
-                
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Vibrační pěch</h3>
+            </div>
+
+            <!-- TĚŽKÁ TECHNIKA -->
+            <div class="subcategory-content" id="tezka">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Minibagr</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Minibagr pro zemní práce</p>
+                            <img src="../FOTKY/BAGR/bagr_orizly.jpg" alt="Minibagr - profesionální zemní práce" class="card-image clickable" data-lightbox="bagr" data-index="0">
+                            <div class=price>650 Kč/hod</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product=Minibagr>Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=bagr>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-body>
-                        <p>Pěchování zeminy</p>
-                        <!-- Hlavní fotka vibračního pěchu s lightbox funkcí -->
-                        <img src="../FOTKY/VIBRACNI_PECH/vibracni_pech.jpg" alt="Vibrační pěch - pěchování zeminy" class="card-image clickable" data-lightbox="vibracni-pech" data-index="0">
-                        <div class=price>550 Kč/den</div>
-                    </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Vibrační pěch">Info</button>
-                        <button class="btn btn-info product-info-btn" data-product=vibrací-pěch>Info o produktu</button>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Dumper</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Přeprava materiálu na stavbě</p>
+                            <img src="../FOTKY/DUMPER/dumper.jpg" alt="Dumper - pohled z boku" class="card-image clickable" data-lightbox="dumper" data-index="0">
+                            <div class=price>2 000 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product=Dumper>Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=dumper>Info o produktu</button>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- DOPRAVA -->
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Velký vlek</h3>
+            </div>
+
+            <!-- ZHUTŇOVÁNÍ -->
+            <div class="subcategory-content" id="zhutnovani">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Vibrační deska</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Zhutňování zeminy</p>
+                            <img src="../FOTKY/VIBRACNI_DESKA/vibracni_deska.jpg" alt="Vibrační deska - zhutňování zemin a dlažeb" class="card-image clickable" data-lightbox="vibracni-deska" data-index="0">
+                            <div class=price>450 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Vibrační deska">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=vibrací-deska>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-body>
-                        <p>Přeprava těžkých nákladů</p>
-                        <!-- Hlavní fotka velkého vleku s lightbox funkcí -->
-                        <img src="../FOTKY/VLEK_VELKY/vlek_velky.jpg" alt="Velký vlek - přeprava těžkých nákladů" class="card-image clickable" data-lightbox="vlek-velky" data-index="0">
-                        <div class=price>400 Kč/den</div>
-                    </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Velký vlek">Info</button>
-                        <button class="btn btn-info product-info-btn" data-product=velký-vlek>Info o produktu</button>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Vibrační pěch</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Pěchování zeminy</p>
+                            <img src="../FOTKY/VIBRACNI_PECH/vibracni_pech.jpg" alt="Vibrační pěch - pěchování zeminy" class="card-image clickable" data-lightbox="vibracni-pech" data-index="0">
+                            <div class=price>550 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Vibrační pěch">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=vibrací-pěch>Info o produktu</button>
+                        </div>
                     </div>
                 </div>
-                
-                <div class=card>
-                    <div class=card-header>
-                        <h3>Malý vlek</h3>
+            </div>
+
+            <!-- DOPRAVA MATERIÁLU -->
+            <div class="subcategory-content" id="doprava">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Velký vlek</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Přeprava těžkých nákladů</p>
+                            <img src="../FOTKY/VLEK_VELKY/vlek_velky.jpg" alt="Velký vlek - přeprava těžkých nákladů" class="card-image clickable" data-lightbox="vlek-velky" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Velký vlek">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=velký-vlek>Info o produktu</button>
+                        </div>
                     </div>
-                    <div class=card-body>
-                        <p>Přeprava lehčích nákladů</p>
-                        <!-- Hlavní fotka malého vleku s lightbox funkcí -->
-                        <img src="../FOTKY/VLEK_MALY/vlek_maly_ze_predu.jpg" alt="Malý vlek - přeprava lehčích nákladů" class="card-image clickable" data-lightbox="maly-vlek" data-index="0">
-                        <div class=price>200 Kč/den</div>
-                    </div>
-                    <div class=card-footer>
-                        <button class="btn btn-primary info-btn" data-product="Malý vlek">Info</button>
-                        <button class="btn btn-info product-info-btn" data-product=malý-vlek>Info o produktu</button>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Malý vlek</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Přeprava lehčích nákladů</p>
+                            <img src="../FOTKY/VLEK_MALY/vlek_maly_ze_predu.jpg" alt="Malý vlek - přeprava lehčích nákladů" class="card-image clickable" data-lightbox="maly-vlek" data-index="0">
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Malý vlek">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=malý-vlek>Info o produktu</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -198,6 +404,57 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        // JavaScript pro podkategorie
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.subcategory-btn');
+            const tabContents = document.querySelectorAll('.subcategory-content');
+            const allCategories = document.getElementById('vsechny');
+            const mobileSelect = document.getElementById('mobileCategorySelect');
+            
+            // Funkce pro změnu kategorie
+            function switchCategory(category) {
+                // Odstraníme active třídu ze všech tlačítek a obsahů
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                allCategories.classList.remove('active');
+                
+                // Přidáme active třídu kliknutému tlačítku
+                if (category !== 'vsechny') {
+                    const activeBtn = document.querySelector(`[data-category="${category}"]`);
+                    if (activeBtn) activeBtn.classList.add('active');
+                }
+                
+                // Zobrazíme obsah podle výběru
+                if (category === 'vsechny') {
+                    allCategories.classList.add('active');
+                } else {
+                    document.getElementById(category).classList.add('active');
+                }
+                
+                // Aktualizujeme select na mobilech
+                if (mobileSelect) {
+                    mobileSelect.value = category;
+                }
+            }
+            
+            // Event listenery pro tlačítka
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    switchCategory(category);
+                });
+            });
+            
+            // Event listener pro mobilní select
+            if (mobileSelect) {
+                mobileSelect.addEventListener('change', function() {
+                    switchCategory(this.value);
+                });
+            }
+        });
+    </script>
     
     <script src="../script.js"></script>
 </body>
