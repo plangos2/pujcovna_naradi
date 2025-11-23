@@ -1,4 +1,142 @@
-<select class="mobile-category-select" id="mobileCategorySelect">
+<!doctype html>
+<html lang=cs>
+<head>
+    <meta charset=UTF-8>
+    <meta content="width=device-width,initial-scale=1,viewport-fit=cover"name=viewport>
+    <title>Stavební nářadí | Půjčovna stavebního nářadí LANGEROVI</title>
+    <link rel="stylesheet" href="../style.css">
+<style>
+.subcategory-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.subcategory-btn {
+    padding: 12px 20px;
+    background: #333;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.subcategory-btn:hover {
+    background: #444;
+    border-color: var(--secondary);
+}
+
+.subcategory-btn.active {
+    background: var(--secondary);
+    color: #000;
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.subcategory-content {
+    display: none;
+    animation: fadeInUp 0.5s ease;
+}
+
+.subcategory-content.active {
+    display: block;
+}
+
+.all-categories {
+    display: none;
+}
+
+.all-categories.active {
+    display: block;
+}
+
+/* MOBILNÍ ROZBALOVACÍ MENU */
+.mobile-category-select {
+    display: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 30px auto;
+    padding: 15px;
+    background: #333;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mobile-category-select:focus {
+    border-color: var(--secondary);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .subcategory-tabs {
+        display: none;
+    }
+    
+    .mobile-category-select {
+        display: block;
+    }
+    
+    .subcategory-btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class=container>
+            <h1>Půjčovna stavebního nářadí a techniky</h1>
+            <p><strong>LANGEROVI</strong></p>
+        </div>
+    </header>
+    
+<nav class=category-nav>
+    <div class=container>
+        <button class=hamburger>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul>
+            <li><a href="../index.html">Úvod</a></li>
+            <li><a href="../VYKOPOVE-PRACE/vykopove-prace.html">Výkopové práce</a></li>
+            <li><a href="stavebni-naradi.html" class="active">Stavební nářadí</a></li>
+            <li><a href="../ZAHRADNI-PRACE/zahradni-naradi.html">Zahradní nářadí</a></li>
+            <li><a href="../CENIK/cenik.html">Ceník</a></li>
+            <li><a href="../KONTAKT/kontakt.html">Kontakt</a></li>
+        </ul>
+    </div>
+</nav>
+    
+    <main class=container>
+        <section class=category-section>
+            <h2>Stavební nářadí</h2>
+            
+            <div class="subcategory-tabs">
+                <button class="subcategory-btn active" data-category="vsechny">Všechny</button>
+                <button class="subcategory-btn" data-category="vrtaci">Vrtací a bourací</button>
+                <button class="subcategory-btn" data-category="rezaci">Řezací a brusné</button>
+                <button class="subcategory-btn" data-category="michaci">Míchací</button>
+                <button class="subcategory-btn" data-category="leseni">Lešení a žebříky</button>
+                <button class="subcategory-btn" data-category="doprava">Doprava a manipulace</button>
+                <button class="subcategory-btn" data-category="klimatizace">Klimatizace a vytápění</button>
+                <button class="subcategory-btn" data-category="specialni">Speciální vybavení</button>
+            </div>
+
+            <select class="mobile-category-select" id="mobileCategorySelect">
     <option value="vsechny">Všechny kategorie</option>
     <option value="vrtaci">Vrtací a bourací</option>
     <option value="rezaci">Řezací a brusné</option>
@@ -8,3 +146,748 @@
     <option value="klimatizace">Klimatizace a vytápění</option>
     <option value="specialni">Speciální vybavení</option>
 </select>
+
+            <!-- VŠECHNY KATEGORIE NAJEDNOU -->
+            <div class="all-categories active" id="vsechny">
+                <div class=cards-container>
+                    <!-- VRTAČÍ A BOURACÍ -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Vrtací kladivo Makita HR4003C SDS-max 1100W</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální vrtání do betonu</p>
+                            <img src="../FOTKY/VRTACI_KLADIVO_MAKITA_HR4003C/vrtaci_kladivo_makita_HR4003C.jpg" alt="Vrtací kladivo Makita HR4003C SDS-max 1100W" class="card-image clickable" data-lightbox="vrtaci-kladivo-makita-hr4003c" data-index="0">
+                            <div class=price>450 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Vrtací kladivo Makita HR4003C SDS-max 1100W">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=vrtací-kladivo-makita-hr4003c>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Vrtací kladivo Makita HR4002 SDS-max 1050W</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální vrtání do betonu</p>
+                            <img src="../FOTKY/VRTACI_KLADIVO_MAKITA_HR4002/vrtaci_kladivo_makita_HR4002.jpg" alt="Vrtací kladivo Makita HR4002 SDS-max 1050W" class="card-image clickable" data-lightbox="vrtaci-kladivo-makita-hr4002" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Vrtací kladivo Makita HR4002 SDS-max 1050W">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=vrtací-kladivo-makita-hr4002>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Kombinované kladivo Makita HR2470 SDS-Plus 780W</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální vrtání a sekání</p>
+                            <img src="../FOTKY/KOMBINOVANE_KLADIVO_MAKITA_HR2470/kombinovane_kladivo_Makita_HR2470.jpg" alt="Kombinované kladivo Makita HR2470 SDS-Plus 780W" class="card-image clickable" data-lightbox="kombinovane-kladivo-makita" data-index="0">
+                            <div class=price>300 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Kombinované kladivo Makita HR2470 SDS-Plus 780W">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=kombinovane-kladivo-makita>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Bourací kladivo</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Bourání betonu a zdiva</p>
+                            <img src="../FOTKY/BOURACI_KLADIVO_SCHEPPACH/scheppach_ab_bouraci_kladivo.jpg" alt="Bourací kladivo Scheppach" class="card-image clickable" data-lightbox="bouraci-kladivo" data-index="0">
+                            <div class=price>450 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Bourací kladivo">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=bourací-kladivo>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <!-- ŘEZACÍ A BRUSNÉ -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Bruska úhlová DeWALT 2600 W</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Řezání kovu a betonu</p>
+                            <img src="../FOTKY/ROZBRUSOVACKA_VELKA_DEWALT/rozbrusovacka_velka_dewalt.jpg" alt="Bruska úhlová DeWALT 2600W" class="card-image clickable" data-lightbox="bruska-uhlova-dewalt" data-index="0">
+                            <div class=price>250 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Bruska úhlová DeWALT 2600 W">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=bruska-uhlova-dewalt>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Rozbrušovačka malá DEWALT</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Řezání pro menší práce</p>
+                            <div class=price>150 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Rozbrušovačka malá DEWALT">Info</button>
+                        </div>
+                    </div>
+
+                    <!-- MÍCHAČKY -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Míchačka velká</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Míchání malty a betonu</p>
+                            <div class=price>350 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Míchačka velká">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=míchačka-velká>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Míchačka malá</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Míchání pro menší objemy</p>
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Míchačka malá">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=míchačka-malá>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <!-- LEŠENÍ A PRACOVNÍ VÝŠKY -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Lešení HAKI</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální lešení</p>
+                            <div class=price>150 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Lešení HAKI">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=lešení-haki>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Hliníkový žebřík</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Lehký a stabilní žebřík</p>
+                            <img src="../FOTKY/HLINIKOVY_ZEBRIK/hlinikovy_zebrik.jpg" alt="Hliníkový žebřík" class="card-image clickable" data-lightbox="hlinikovy-zebrik" data-index="0">
+                            <div class=price>250 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Hliníkový žebřík">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=hliníkový-žebřík>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Stavební kozy</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Pracovní plošiny</p>
+                            <div class=price>50 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Stavební kozy">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=stavební-kozy>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Dřevěné štafle</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Klasické dřevěné štafle</p>
+                            <div class=price>50 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Dřevěné štafle">Info</button>
+                        </div>
+                    </div>
+
+                    <!-- DOPRAVA A MANIPULACE -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Rudl 350kg</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Přeprava těžkých břemen</p>
+                            <img src="../FOTKY/RUDL_BLUE_350KG/rudl_350kg.jpg" alt="Rudl 350kg" class="card-image clickable" data-lightbox="rudl" data-index="0">
+                            <div class=price>100 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Rudl 350kg">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=rudl>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Odolné nájezdy</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální nájezdy pro těžkou techniku</p>
+                            <div class=price>300 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Odolné nájezdy">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=odolne-najezy>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <!-- KLIMATIZACE A VYTÁPĚNÍ -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Odvlhčovač</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální odvlhčovač vzduchu</p>
+                            <img src="../FOTKY/ODVLCHCOVAC_MSW/odvlhcovac_ze_predu.jpg" alt="Odvlhčovač MSW" class="card-image clickable" data-lightbox="odvlhcovac" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Odvlhčovač">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=odvlhcovac>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Naftové topidlo</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Výkonné naftové topidlo 45kW</p>
+                            <img src="../FOTKY/NAFTOVE_TOPIDLO_BULLTECH/naftove_topidlo_bulltech.jpg" alt="Naftové topidlo Bulltech 45kW" class="card-image clickable" data-lightbox="naftove-topidlo" data-index="0">
+                            <div class=price>300 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Naftové topidlo">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=naftove-topidlo>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Teplovzdušný ventilátor</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Výkonné vytápění prostor</p>
+                            <img src="../FOTKY/TEPLOVZDUSNY_VENTILATOR/teplovzdusny_ventilator.jpg" alt="Teplovzdušný ventilátor" class="card-image clickable" data-lightbox="teplovzdusny-ventilator" data-index="0">
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Teplovzdušný ventilátor">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=teplovzdusny-ventilator>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <!-- SPECIÁLNÍ VYBAVENÍ -->
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Kompresor</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Pohon pneumatického nářadí</p>
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product=Kompresor>Info</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Detektor kovu</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální detektor kovů Vanquish</p>
+                            <img src="../FOTKY/DETEKTOR_KOVU/detektor_kovu.jpg" alt="Detektor kovu Vanquish" class="card-image clickable" data-lightbox="detektor-kovu" data-index="0">
+                            <div class=price>350 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Detektor kovu">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=detektor-kovu>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Svářečka Weldy 130</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Transformátorová svářečka pro profesionální použití</p>
+                            <img src="../FOTKY/SVARECKA_WELDY_130/svarecka_weldy_130.jpg" alt="Svářečka Weldy 130" class="card-image clickable" data-lightbox="svarecka-weldy-130" data-index="0">
+                            <div class=price>Cena nepřidána</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Svářečka Weldy 130">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=svarecka-weldy-130>Info o produktu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VRTAČÍ A BOURACÍ -->
+            <div class="subcategory-content" id="vrtaci">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Vrtací kladivo Makita HR4003C SDS-max 1100W</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální vrtání do betonu</p>
+                            <img src="../FOTKY/VRTACI_KLADIVO_MAKITA_HR4003C/vrtaci_kladivo_makita_HR4003C.jpg" alt="Vrtací kladivo Makita HR4003C SDS-max 1100W" class="card-image clickable" data-lightbox="vrtaci-kladivo-makita-hr4003c" data-index="0">
+                            <div class=price>450 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Vrtací kladivo Makita HR4003C SDS-max 1100W">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=vrtací-kladivo-makita-hr4003c>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Vrtací kladivo Makita HR4002 SDS-max 1050W</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální vrtání do betonu</p>
+                            <img src="../FOTKY/VRTACI_KLADIVO_MAKITA_HR4002/vrtaci_kladivo_makita_HR4002.jpg" alt="Vrtací kladivo Makita HR4002 SDS-max 1050W" class="card-image clickable" data-lightbox="vrtaci-kladivo-makita-hr4002" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Vrtací kladivo Makita HR4002 SDS-max 1050W">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=vrtací-kladivo-makita-hr4002>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Kombinované kladivo Makita HR2470 SDS-Plus 780W</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální vrtání a sekání</p>
+                            <img src="../FOTKY/KOMBINOVANE_KLADIVO_MAKITA_HR2470/kombinovane_kladivo_Makita_HR2470.jpg" alt="Kombinované kladivo Makita HR2470 SDS-Plus 780W" class="card-image clickable" data-lightbox="kombinovane-kladivo-makita" data-index="0">
+                            <div class=price>300 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Kombinované kladivo Makita HR2470 SDS-Plus 780W">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=kombinovane-kladivo-makita>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Bourací kladivo</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Bourání betonu a zdiva</p>
+                            <img src="../FOTKY/BOURACI_KLADIVO_SCHEPPACH/scheppach_ab_bouraci_kladivo.jpg" alt="Bourací kladivo Scheppach" class="card-image clickable" data-lightbox="bouraci-kladivo" data-index="0">
+                            <div class=price>450 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Bourací kladivo">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=bourací-kladivo>Info o produktu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ŘEZACÍ A BRUSNÉ -->
+            <div class="subcategory-content" id="rezaci">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Bruska úhlová DeWALT 2600 W</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Řezání kovu a betonu</p>
+                            <img src="../FOTKY/ROZBRUSOVACKA_VELKA_DEWALT/rozbrusovacka_velka_dewalt.jpg" alt="Bruska úhlová DeWALT 2600W" class="card-image clickable" data-lightbox="bruska-uhlova-dewalt" data-index="0">
+                            <div class=price>250 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Bruska úhlová DeWALT 2600 W">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=bruska-uhlova-dewalt>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Rozbrušovačka malá DEWALT</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Řezání pro menší práce</p>
+                            <div class=price>150 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Rozbrušovačka malá DEWALT">Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MÍCHAČKY -->
+            <div class="subcategory-content" id="michaci">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Míchačka velká</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Míchání malty a betonu</p>
+                            <div class=price>350 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Míchačka velká">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=míchačka-velká>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Míchačka malá</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Míchání pro menší objemy</p>
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Míchačka malá">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=míchačka-malá>Info o produktu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEŠENÍ A PRACOVNÍ VÝŠKY -->
+            <div class="subcategory-content" id="leseni">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Lešení HAKI</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální lešení</p>
+                            <div class=price>150 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Lešení HAKI">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=lešení-haki>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Hliníkový žebřík</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Lehký a stabilní žebřík</p>
+                            <img src="../FOTKY/HLINIKOVY_ZEBRIK/hlinikovy_zebrik.jpg" alt="Hliníkový žebřík" class="card-image clickable" data-lightbox="hlinikovy-zebrik" data-index="0">
+                            <div class=price>250 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Hliníkový žebřík">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=hliníkový-žebřík>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Stavební kozy</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Pracovní plošiny</p>
+                            <div class=price>50 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Stavební kozy">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=stavební-kozy>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Dřevěné štafle</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Klasické dřevěné štafle</p>
+                            <div class=price>50 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Dřevěné štafle">Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOPRAVA A MANIPULACE -->
+            <div class="subcategory-content" id="doprava">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Rudl 350kg</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Přeprava těžkých břemen</p>
+                            <img src="../FOTKY/RUDL_BLUE_350KG/rudl_350kg.jpg" alt="Rudl 350kg" class="card-image clickable" data-lightbox="rudl" data-index="0">
+                            <div class=price>100 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Rudl 350kg">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=rudl>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Odolné nájezdy</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální nájezdy pro těžkou techniku</p>
+                            <div class=price>300 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Odolné nájezdy">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=odolne-najezy>Info o produktu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KLIMATIZACE A VYTÁPĚNÍ -->
+            <div class="subcategory-content" id="klimatizace">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Odvlhčovač</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální odvlhčovač vzduchu</p>
+                            <img src="../FOTKY/ODVLCHCOVAC_MSW/odvlhcovac_ze_predu.jpg" alt="Odvlhčovač MSW" class="card-image clickable" data-lightbox="odvlhcovac" data-index="0">
+                            <div class=price>400 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Odvlhčovač">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=odvlhcovac>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Naftové topidlo</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Výkonné naftové topidlo 45kW</p>
+                            <img src="../FOTKY/NAFTOVE_TOPIDLO_BULLTECH/naftove_topidlo_bulltech.jpg" alt="Naftové topidlo Bulltech 45kW" class="card-image clickable" data-lightbox="naftove-topidlo" data-index="0">
+                            <div class=price>300 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Naftové topidlo">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=naftove-topidlo>Info o produktu</button>
+                        </div>
+                    </div>
+                    
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Teplovzdušný ventilátor</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Výkonné vytápění prostor</p>
+                            <img src="../FOTKY/TEPLOVZDUSNY_VENTILATOR/teplovzdusny_ventilator.jpg" alt="Teplovzdušný ventilátor" class="card-image clickable" data-lightbox="teplovzdusny-ventilator" data-index="0">
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Teplovzdušný ventilátor">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=teplovzdusny-ventilator>Info o produktu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPECIÁLNÍ VYBAVENÍ -->
+            <div class="subcategory-content" id="specialni">
+                <div class=cards-container>
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Kompresor</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Pohon pneumatického nářadí</p>
+                            <div class=price>200 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product=Kompresor>Info</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Detektor kovu</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Profesionální detektor kovů Vanquish</p>
+                            <img src="../FOTKY/DETEKTOR_KOVU/detektor_kovu.jpg" alt="Detektor kovu Vanquish" class="card-image clickable" data-lightbox="detektor-kovu" data-index="0">
+                            <div class=price>350 Kč/den</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Detektor kovu">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=detektor-kovu>Info o produktu</button>
+                        </div>
+                    </div>
+
+                    <div class=card>
+                        <div class=card-header>
+                            <h3>Svářečka Weldy 130</h3>
+                        </div>
+                        <div class=card-body>
+                            <p>Transformátorová svářečka pro profesionální použití</p>
+                            <img src="../FOTKY/SVARECKA_WELDY_130/svarecka_weldy_130.jpg" alt="Svářečka Weldy 130" class="card-image clickable" data-lightbox="svarecka-weldy-130" data-index="0">
+                            <div class=price>Cena nepřidána</div>
+                        </div>
+                        <div class=card-footer>
+                            <button class="btn btn-primary info-btn" data-product="Svářečka Weldy 130">Info</button>
+                            <button class="btn btn-info product-info-btn" data-product=svarecka-weldy-130>Info o produktu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Skryté fotky pro lightbox galerie -->
+    <div style="display: none;">
+        <!-- Skryté fotky odvlhčovače -->
+        <img src="../FOTKY/ODVLCHCOVAC_MSW/odvlhcovac_ze_zhora.jpg" data-lightbox="odvlhcovac" data-index="1">
+        
+        <!-- Skryté fotky bouracího kladiva -->
+        <img src="../FOTKY/BOURACI_KLADIVO_SCHEPPACH/scheppach_ab_bouraci_kladivo_s_nastavcema.jpg" data-lightbox="bouraci-kladivo" data-index="1">
+        <img src="../FOTKY/BOURACI_KLADIVO_SCHEPPACH/scheppach_ab_bouraci_kladivo_v_bedne.jpg" data-lightbox="bouraci-kladivo" data-index="2">
+    </div>
+
+    <!-- Footer zůstává stejný -->
+<footer>
+    <div class=container>
+        <div class=footer-content>
+            <div class=footer-section>
+                <h3>Kontakt</h3>
+                <div class="contact-info-footer">
+                    <p><strong>Telefon:</strong> +420 731 127 142</p>
+                    <p><strong>Telefon:</strong> +420 731 127 144</p>
+                    <p><strong>Email:</strong> dobrecov@seznam.cz</p>
+                    <p><strong>Adresa:</strong> Lidická 54, Lanškroun 56301</p>
+                </div>
+            </div>
+                <div class=footer-section>
+                    <h3>Rychlé odkazy</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Úvod</a></li>
+                        <li><a href="../VYKOPOVE-PRACE/vykopove-prace.html">Výkopové práce</a></li>
+                        <li><a href="stavebni-naradi.html">Stavební nářadí</a></li>
+                        <li><a href="../ZAHRADNI-PRACE/zahradni-naradi.html">Zahradní nářadí</a></li>
+                        <li><a href="../CENIK/cenik.html">Ceník</a></li>
+                        <li><a href="../KONTAKT/kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class=footer-bottom>
+                <p>© 2023 Půjčovna nářadí LANGEROVI. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class=modal id=infoModal>
+        <div class=modal-backdrop></div>
+        <div class=modal-content>
+            <span class=close-modal>×</span>
+            <h3 id=modalTitle>Detail položky</h3>
+            <div class=modal-body-container>
+                <div id=modalBody></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class=modal id=productInfoModal>
+        <div class=modal-backdrop></div>
+        <div class=modal-content>
+            <span class=close-modal>×</span>
+            <h3 id=productModalTitle>Technické specifikace</h3>
+            <div class=modal-body-container>
+                <div id=productModalBody></div>
+            </div>
+        </div>
+    </div>
+    
+<script>
+// JavaScript pro podkategorie
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.subcategory-btn');
+    const tabContents = document.querySelectorAll('.subcategory-content');
+    const allCategories = document.getElementById('vsechny');
+    const mobileSelect = document.getElementById('mobileCategorySelect');
+    
+    // Funkce pro změnu kategorie
+    function switchCategory(category) {
+        // Odstraníme active třídu ze všech tlačítek a obsahů
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        allCategories.classList.remove('active');
+        
+        // Přidáme active třídu kliknutému tlačítku
+        if (category !== 'vsechny') {
+            const activeBtn = document.querySelector(`[data-category="${category}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+        
+        // Zobrazíme obsah podle výběru
+        if (category === 'vsechny') {
+            allCategories.classList.add('active');
+        } else {
+            document.getElementById(category).classList.add('active');
+        }
+        
+        // Aktualizujeme select na mobilech
+        if (mobileSelect) {
+            mobileSelect.value = category;
+        }
+    }
+    
+    // Event listenery pro tlačítka
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+            switchCategory(category);
+        });
+    });
+    
+    // Event listener pro mobilní select
+    if (mobileSelect) {
+        mobileSelect.addEventListener('change', function() {
+            switchCategory(this.value);
+        });
+    }
+});
+</script>
+    
+    <script src="../script.js"></script>
+</body>
+</html>
