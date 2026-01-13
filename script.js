@@ -2,7 +2,7 @@ const itemsData = {
     "Bagr HUAYA": {
         cena: "850 Kč/h",
         doba: "Dohodou",
-        doprava: "Lanškroun 500 Kč - mimo Lanškroun 15 Kč/1km do 30 km",
+        doprava: "Lanškroun 500 Kč - mimo Lanškroun 30 Kč/1km do 30 km",
         typ: "S obsluhou"
     },
     "Minibagr": {
@@ -323,7 +323,7 @@ const productSpecs = {
         title: "Bagr HUAYA",
         specs: [
             { label: "Hmotnost", value: "2500 kg" },
-            { label: "Výkon motoru", value: "20 kW při 2200 ot./min" },
+            { label: "Výkon motoru", value: "25 kW při 2200 ot./min" },
             { label: "Maximální hloubka kopání", value: "2300 mm" },
             { label: "Maximální výška kopání", value: "3365 mm" },
             { label: "Maximální výška vysypání", value: "2488 mm" },
@@ -1247,4 +1247,5 @@ function handleResize() {
             hamburger.classList.remove('active');
         }
     }
+
 }
