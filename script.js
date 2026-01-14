@@ -2,20 +2,20 @@ const itemsData = {
     "Bagr HUAYA": {
         cena: "850 Kč/h",
         doba: "Dohodou",
-        doprava: "Lanškroun 500 Kč - mimo Lanškroun 30 Kč/1km do 30 km",
+        doprava: "Lanškroun 500 Kč - mimo Lanškroun 25 Kč/1km do 30 km + vykládka/nakládka 300 Kč",
         typ: "S obsluhou"
     },
     "Minibagr": {
         cena: "650 Kč/h",
         doba: "Dohodou",
-        doprava: "Lanškroun 500 Kč - mimo Lanškroun 15 Kč/1km do 30 km",
+        doprava: "Lanškroun 500 Kč - mimo Lanškroun 25 Kč/1km do 30 km + vykládka/nakládka 300 Kč",
         typ: "S obsluhou",
         příslušenství: "Radlice 20 / 40 / 60<br>Radlice 80 / svahová<br>Radlice 80 / hydraulická svahová"
     },
     "Dumper": {
         cena: "2 000 Kč",
         doba: "Dohodou",
-        doprava: "Lanškroun 400 Kč - mimo Lanškroun 15 Kč/1km do 30 km",
+        doprava: "Lanškroun 400 Kč - mimo Lanškroun 15 Kč/1km do 30 km + vykládka/nakládka 300 Kč",
         typ: "Půjčení/ Obsluha dle domluvy"
     },
     "Vibrační pěch": {
@@ -1249,4 +1249,3 @@ function handleResize() {
     }
 
 }
-
